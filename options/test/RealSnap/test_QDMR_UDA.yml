@@ -1,0 +1,65 @@
+name: test_QDMR_UDA_RealSnap
+model_type: QDMR_UDAModel
+scale: 1
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+datasets:
+  test_1:
+    name: RealSim_val
+    type: PairedImageDataset
+    dataroot_gt: datasets/Realab/Real-Snap/S1_val_2K
+    dataroot_lq: datasets/Realab/Real-Snap/S1_val_2K
+    io_backend:
+      type: disk
+    gt_size: 256
+
+
+network_g:
+  type: QDMR_UDA_Network
+  in_channel: 3
+  gt_resolution: 256
+  norm_type: 'gn'
+  act_type: 'silu'
+  scale_factor: 1
+  codebook_params:
+    - [32, 1024, 512]
+
+  LQ_stage: true
+  use_weight: false
+  weight_alpha: -1.0
+  frozen_module_keywords: ['quantize']
+
+
+network_s:
+  type: UDAVQGAN_S2T
+  in_channel: 3
+  gt_resolution: 256
+  norm_type: 'gn'
+  act_type: 'silu'
+  # use_semantic_loss: true
+  codebook_params: # has to order from low to high
+    - [32, 1024, 512]
+
+  # for HQ stage training
+  LQ_stage: false 
+  use_quantize: true
+
+# path
+path:
+  pretrain_network_dmc: pretrain/DMC_snap_s1.pth
+  pretrain_network_s: pretrain/DMC_snap_s1.pth
+  pretrain_network_g: pretrain/QDMR_UDA_snap_s1_net_g.pth
+  # pretrain_network_d: ~
+  strict_load: false 
+  # resume_state: ~
+
+# validation settings
+val:
+  save_img: true
+  suffix: ~  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    niqe: # metric name, can be arbitrary
+      type: calculate_niqe
+
