@@ -59,7 +59,7 @@ conda create -n QDMR python=3.10
 conda activate QDMR
 pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
 pip install -r requirements.txt
-python setup.py develop --no_cuda_ext
+python setup.py develop
 ```
 
 #### Training
