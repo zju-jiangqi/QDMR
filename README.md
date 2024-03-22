@@ -81,7 +81,7 @@ Training files (logs, models, training states and visualizations) will be saved 
 Then, use the pre-trained DMC and VQGAN to train QDMR-Base or QDMR-UDA. 
 
 Our pre-trained weights are also available.
-- Download the pre-trained DMC and trained models from our [Huggingface](https://huggingface.co/datasets/Zhonghua/Realab/tree/main) or [Baidu Disk]() to './pretrain'.
+- Download the pre-trained DMC and trained models from our [Huggingface](https://huggingface.co/datasets/Zhonghua/Realab/tree/main) or [Baidu Disk](https://pan.baidu.com/s/1F3Vc7exmcpc_SgmIWmUyyQ?pwd=ba4s) to './pretrain'.
 
 
 -QDMR-Base:
