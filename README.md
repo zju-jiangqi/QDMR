@@ -1,9 +1,5 @@
 # Quantized Domain-Mixing Representation
 
-### [Paper](https://arxiv.org/pdf/2403.10012.pdf)
-
-> **Real-world Computational Aberration Correction via Quantized Domain-Mixing Representation** <br>
-> Qi Jiang, Zhonghua Yi, Shaohua Gao, Yao Gao et al. <br>
 
 ### Abstract
 
